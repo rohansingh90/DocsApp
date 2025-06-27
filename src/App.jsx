@@ -1,10 +1,12 @@
 import React from 'react'
 import DocPage from './Comopents/DocPage'
+import Drivehome from './Comopents/Drivehome'
 
 const App = () => {
   return (
-    <div className='mt-5'>
-      <DocPage/>
+    <div className=''>
+    <Drivehome/>
+    
     </div>
   )
 }
