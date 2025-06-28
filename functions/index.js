@@ -1,16 +1,10 @@
-// const express = require("express");
-// const cors = require("cors");
-// const fetch = require("node-fetch");
-import express from "express";
-import cors from "cors";
-import fetch from "node-fetch";
-
+/* eslint-disable no-undef */
+const express = require("express");
+const cors = require("cors");
+const fetch = require("node-fetch");
+const functions = require("firebase-functions");
 const app = express();
 app.use(cors());
-
-const PORT = 5000;
-
-
 app.get("/proxy-file", async (req, res) => {
   const fileUrl = req.query.url;
 
@@ -34,7 +28,4 @@ app.get("/proxy-file", async (req, res) => {
     res.status(500).send("Server error");
   }
 });
-
-app.listen(PORT, () => {
-  console.log(`✅ Proxy server running at http://localhost:${PORT}`);
-});
+exports.proxyfile = functions.https.onRequest(app);
